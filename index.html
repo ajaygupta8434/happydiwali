@@ -445,6 +445,24 @@
         alert("Sharing not supported on this device. Copy message manually:\n\n" + message);
       }
     }
+   function shareGreeting() {
+  const shareData = {
+    title: "Happy Diwali 🎆",
+    text: "Wishing you a very Happy Diwali! 🪔🎇",
+    url: "https://ajaygupta8434.github.io/happydiwali/"
+  };
+
+  if (navigator.share) {
+    // Agar device Web Share API support karta hai
+    navigator.share(shareData)
+      .then(() => console.log('Shared successfully!'))
+      .catch((error) => console.log('Sharing failed:', error));
+  } else {
+    // Agar share API support nahi karta (desktop browsers)
+    alert("Copy this link and share it with your friends:\n" + shareData.url);
+  }
+}
   </script>
 </body>
 </html>
+
